@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+	
+    <aura:attribute name="action" type="String" description="Specifies the button clicked by the user." />
+    
+    <lightning:overlayLibrary aura:id="overlayLibFooter" />
+    
+    <lightning:button aura:id="Cancel" label="{!$Label.c.Cancel}" onclick="{!c.handleClickEvent}" />
+    
+    <!-- To be used in case of Delete Action -->
+    <aura:if isTrue="{! (v.action == 'Delete')}" >
+        <lightning:button aura:id="Delete" variant="brand" label="{!$Label.c.Ok}" onclick="{!c.handleClickEvent}" />
+    </aura:if>
+    
+    <!-- To be used in case of New or Edit Action -->
+    <aura:if isTrue="{! (v.action == 'New') || (v.action == 'Edit')}" >
+        <lightning:button aura:id="New" variant="brand" label="{!$Label.c.Save}" onclick="{!c.handleClickEvent}" />
+    </aura:if>
+    
+</aura:component>

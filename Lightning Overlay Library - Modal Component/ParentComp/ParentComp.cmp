@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    
+    <!-- Attributes for Modal -->
+    <aura:attribute name="modalComponents" type="Aura.Component[]" description="[ModalHeader, ModalBody, ModalFooter]"/>
+    <aura:attribute name="selectedAction" type="String" description="Specifies the selected action (New, Edit, Delete)." />
+    <aura:attribute name="showModal" type="Boolean" default="false" description="Specifies whether c:ModalContainer should be instantiated or not." />
+    
+    <aura:handler name="change" value="{!v.selectedAction}" action="{!c.handleModalAction}" description="Gets the value set in c:ModalFooter for attribute: selectedAction." />
+    
+    <aura:if isTrue="{!v.showModal}">
+        <c:ModalContainer aura:id="ModalContainer" modalComponents="{#v.modalComponents}" />
+    </aura:if>
+    
+	<lightning:button aura:id="Delete" variant="brand" label="{!$Label.c.Ok}" onclick="{!c.handleDeleteAction}" />
+    
+</aura:component>
