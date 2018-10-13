@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="RecordSelectorController" >
+	
+    <aura:attribute name="objectName" type="String" default="Account" description="Object API Name whose records should be shown in Data Table." />
+    <aura:attribute name="customMetadataName" type="String" default="Account_Record_Selector" description="Custom Metadata Name that has configuration for columns of Data Table." />
+    <aura:attribute name="pillsToBeAdded" type="List" default="[]" description="List of pills to be shown in pill container." />
+    <aura:attribute name="recordSelectedMap" type="Map" default="{}" description="List of pills to be shown in pill container." />
+    <aura:attribute name="noRecordSelected" type="Integer" default="0" description="Specifies the number of records selected." />
+    <aura:attribute name="dataTableColumns" type="List" default="[]" description="Specifies the columns in Data Table." />
+    <aura:attribute name="records" type="Object" default="{}" description="List of records to be shown in the Data Table." />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Add lightning:spinner -->
+    
+    <aura:if isTrue="{! v.noRecordSelected > 0}">
+       	<lightning:pillContainer items="{!v.pillsToBeAdded}" />
+       	<br/>
+       	
+      	<lightning:formattedText value="{!v.noRecordSelected + ' records selected'}" />
+ 		<br/>
+    </aura:if>
+    
+    <lightning:dataTable columns="{!v.dataTableColumns}" data="{!v.records}" keyField="id" onrowselection="{!c.getSelectedRecords}" />
+    
+</aura:component>

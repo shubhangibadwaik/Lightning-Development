@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="objectName" label="Object" />
+    <design:attribute name="customMetadataName" label="Custom Metadata Name" />
+</design:component>
