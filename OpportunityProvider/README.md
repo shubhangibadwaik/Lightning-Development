@@ -7,10 +7,10 @@
 
 
 ## Description of Files and Directories
-The Opportunity Providers component is a hierarchy of the below three generic components:
+The Opportunity Providers component consists of a hierarchy of the below three generic components:
 1.	OpportunityProviderComp
 -	Root component responsible for retrieving configuration for the component stored in Custom Metadata – Related List, Opportunity Provider records.
--	Displays the Header row and iterated over the record list to shows records.
+-	Displays the Header row and iterates over the record list to shows records using DataTableRow component. 
 2.	DataTableRow 
 -	Called by OpportunityProviderComp, this component is responsible for displaying a record, row-level 'Edit' action and tracking changes to the record.
 3.	DataTableCell
