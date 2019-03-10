@@ -1,0 +1,31 @@
+<template>
+    
+    <!--td role="gridcell">-->
+    
+        <template if:true={isedit}>
+            <template if:true={isReference}>
+                <template if:true={isupdateable}>
+                    <c-lookup-comp fieldname={fieldname} lookupvalue={fieldvalue} objectname={referenceto} relationshipname={relationshipname}></c-lookup-comp>
+                </template>
+                <template if:false={isupdateable}>
+                    <lightning-formatted-text value={fieldvalue}></lightning-formatted-text>
+                </template>
+            </template>
+            <template if:true={isBoolean}>
+                <lightning-input data-fieldname={fieldname} type="checkbox" checked={fieldvalue} 
+                onchange={valueChangeHandler}></lightning-input>
+            </template>
+        </template>
+        
+        <template if:false={isedit}>
+            <template if:true={isReference}>
+                <lightning-formatted-text value={fieldvalue}></lightning-formatted-text>
+            </template>
+            <template if:true={isBoolean}>
+                <lightning-input type="checkbox" checked={fieldvalue} disabled></lightning-input>
+            </template>
+        </template>
+        
+    <!--</td>-->
+
+</template>

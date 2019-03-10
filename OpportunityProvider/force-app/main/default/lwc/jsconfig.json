@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/data-table-cell": [
+                "dataTableCell/dataTableCell.js"
+            ],
+            "c/data-table-row": [
+                "dataTableRow/dataTableRow.js"
+            ],
+            "c/lookup-comp": [
+                "lookupComp/lookupComp.js"
+            ],
+            "c/opportunity-provider-comp": [
+                "opportunityProviderComp/opportunityProviderComp.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts",
+        "../../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}

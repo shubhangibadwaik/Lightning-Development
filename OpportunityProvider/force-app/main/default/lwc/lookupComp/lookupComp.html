@@ -1,0 +1,40 @@
+<template>
+    
+    <template if:true={isLookupValue}>
+        <div class="slds-pill-container">
+            <span class="slds-pill slds-size_1-of-1">
+                <span> {lookupvalue} </span>
+                <lightning-button-icon icon-name="utility:close" size="xx-small" onclick={clearLookupValue}>
+                </lightning-button-icon>
+            </span>
+        </div>
+    </template>
+    
+    <template if:false={isLookupValue}>
+        <lightning-input type="search" placeholder={inputPlaceHolder} name={inputPlaceHolder}
+        value={searchString} onchange={handleValueChange}></lightning-input>
+    </template>
+    
+    <template if:true={isSearchDone}>
+        <div class="slds-lookup_menu" role="listbox">
+            <ul class="slds-lookup_list" role="presentation" >
+                
+                <template if:true={areMatchesFound}>
+                    <template for:each={listResult} for:item="result">
+                        <li key={result.Name} class="slds-lookup_item">
+                            <a role="option" onclick={handleSelection} data-name={result.Name} data-id={result.Id}>
+                                <span class="slds-truncate">{result.Name}</span>
+                            </a>
+                        </li>
+                    </template>
+                </template>
+
+                <template if:false={areMatchesFound}>
+                    <li class="slds-lookup_item" role="option">
+                        <span class="slds-truncate"> No Records Found </span>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </template>
+</template>

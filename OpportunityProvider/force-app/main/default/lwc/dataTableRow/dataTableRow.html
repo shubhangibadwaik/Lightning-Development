@@ -1,0 +1,23 @@
+<template>
+    <!--tr class="slds-hint-parent" key={record.Id} onlookupvaluechange={handleLookupValueChange}>-->
+    <lightning-layout key={record.Id}>
+        <template if:true={areDataValuesReady}>
+            <template for:each={listDataValues} for:item="datavalue">
+                <lightning-layout-item key={datavalue.fieldname} padding="around-small" size="2">
+                    <c-data-table-cell key={datavalue.fieldname} fieldtype={datavalue.fieldType} fieldname={datavalue.fieldName} 
+                    fieldvalue={datavalue.fieldValue} isedit={isEdit} referenceto={datavalue.referenceTo} 
+                    relationshipname={datavalue.relationshipName} isupdateable={datavalue.updateable} onvaluechange={handleValueChange} ></c-data-table-cell>
+                </lightning-layout-item>    
+            </template>
+
+            <lightning-layout-item padding="around-small">
+            <!--td role="gridcell" class="widthClass">-->
+                <lightning-button-icon icon-name="utility:edit" alternative-text="Edit" size="xx-small" 
+                onclick={editRecordHandler}>
+                </lightning-button-icon>
+            <!--</td>-->
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>    
+    <!--</tr>-->
+</template>

@@ -1,0 +1,56 @@
+<template>  <!-- When a component renders, this root element is replaced by the name of the component, <namespace-component-name> -->
+    
+    <template if:false={dataReady}>
+        <lightning-spinner data-id="Spinner" variant="brand" ></lightning-spinner>
+    </template>
+
+    <template if:true={dataReady}>
+        <lightning-card data-id="Card" title={objConfig.MasterLabel} icon-name="custom:custom14" class="slds-is-relative slds-table_edit_container slds-scrollable_x">
+            
+            <!--<table class="slds-table slds-table_bordered" role="grid">
+                <thead>
+                    <tr>-->
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12">
+                    <lightning-layout>
+                        <template for:each={listFieldLabel} for:item="fieldLabel" >
+                            <!--<th scope="col" key={fieldLabel} class="slds-text-title_caps widthClass">
+                                <span>{fieldLabel}</span>
+                            </th>-->
+                            <lightning-layout-item key={fieldLabel} class="slds-text-title_caps" padding="around-small" size="2">
+                                <span>{fieldLabel}</span>
+                            </lightning-layout-item>
+                        </template>
+                        <!--th scope="col" class="slds-text-title_caps widthClass">
+                            <span>{label.action}</span>
+                        </th>-->
+                        <lightning-layout-item class="slds-text-title_caps" padding="around-small">
+                            <span>{label.action}</span>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+                    <!--</tr>
+                </thead>-->
+                <!--tbody>-->
+                <lightning-layout-item size="12">
+                    <template for:each={listRecord} for:item="record" for:index="index" >
+                        <c-data-table-row data-id={record.Id} key={record.Id} record={record} rowindex={index}
+                        fieldnames={objConfig.Field_Names__c} mapfieldresult={mapFieldResult} 
+                        onedit={editRecordHandler}></c-data-table-row>
+                    </template>
+                </lightning-layout-item>
+                <!--/tbody>-->
+
+                <lightning-layout-item padding="around-small" size="12">
+                    <template if:true={showFooter}>
+                        <div class="slds-align_absolute-center"> 
+                            <lightning-button variant="neutal" label={label.cancel} onclick={cancelActionHandler}></lightning-button>
+                            <lightning-button variant="brand" label={label.save} onclick={saveActionHandler} style="margin-left: 10px;"></lightning-button>
+                        </div>
+                    </template>
+                </lightning-layout-item>
+            <!--/table-->
+            </lightning-layout>
+        </lightning-card>
+    </template>
+</template>
